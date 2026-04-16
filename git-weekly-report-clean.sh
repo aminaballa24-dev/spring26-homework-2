@@ -11,3 +11,5 @@ do
     echo "$day - $commits commits by $authors"
   fi
 done
+
+# final version
