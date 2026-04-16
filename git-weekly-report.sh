@@ -3,13 +3,15 @@
 echo "Git Weekly Report"
 echo "-----------------"
 
-echo "Commits in last 7 days:"
-git log --since="7 days ago" --oneline | wc -l
+for i in {0..6}
+do
+  day=$(date -d "$i days ago" +"%d.%m.%Y")
+  
+  commits=$(git log --since="$i days ago" --until="$((i-1)) days ago" --oneline | wc -l)
+  
+  authors=$(git log --since="$i days ago" --until="$((i-1)) days ago" --pretty="%an" | sort | uniq | tr '\n' ', ')
 
-echo ""
-echo "Branches:"
-git branch
-
-echo ""
-echo "Last 5 commits:"
-git log -5 --oneline
+  if [ "$commits" -gt 0 ]; then
+    echo "$day - $commits commits by $authors"
+  fi
+done
