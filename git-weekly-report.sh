@@ -1,3 +1,4 @@
+# weekly report script
 #!/bin/bash
 
 echo "Git Weekly Report"
