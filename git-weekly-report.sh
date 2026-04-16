@@ -1,5 +1,5 @@
-# weekly report script
 #!/bin/bash
+# weekly report script
 
 echo "Git Weekly Report"
 echo "-----------------"
